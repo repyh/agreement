@@ -59,9 +59,9 @@ module.exports = {
     if (moderator.id == toWarn.id)
       return msg.reply(cantbanyourself);
     if (
-      server.member(moderator.id).roles.highest.rawPosition <=
-      (server.member(toWarn.id)
-        ? server.member(toWarn.id).roles.highest.rawPosition
+      server.members.cache.get(moderator.id).roles.highest.rawPosition <=
+      (server.members.cache.get(toWarn.id)
+        ? server.members.cache(toWarn.id).roles.highest.rawPosition
         : 0)
     )
       return msg.reply(
